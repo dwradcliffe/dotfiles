@@ -1,0 +1,25 @@
+[user]
+	name = David Radcliffe
+	email = radcliffe.david@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+	autocrlf = input
+[alias]
+	aa = add --all
+  di = diff --color
+  dc = diff --cached --color
+  pullff = pull --ff-only
+  ci = commit
+  co = checkout
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  undo = reset --soft HEAD^
+[color]
+	ui = auto
+
+[hub]
+protocol = https
+[push]
+	default = simple
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
