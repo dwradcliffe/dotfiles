@@ -6,8 +6,16 @@ plugins=(git heroku brew ruby git-flow)
 source $ZSH/oh-my-zsh.sh
 
 # setup prompt
-export PS1="%F{blue} %~ ➜ %f"
+git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null)
+  if [[ -n $ref ]]; then
+    echo " %F{green}${ref#refs/heads/}%f"
+  fi
+}
+setopt promptsubst
+export PS1='%F{blue}%~$(git_prompt_info) %F{blue}➜ %f'
 
+# source other files
 [[ -f ~/.zshenv ]] && source ~/.zshenv
 [[ -f ~/.secrets ]] && source ~/.secrets
 [[ -f ~/.aliases ]] && source ~/.aliases
