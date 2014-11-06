@@ -16,9 +16,6 @@ export PATH="/opt/chefdk/bin:$PATH"
 # Setup rbenv
 eval "$(rbenv init -)"
 
-# Setup trabian cli
-eval "$($HOME/trabian/trabian-cli/bin/trabian init -)"
-
 # Setup rubygems cli
 eval "$($HOME/.meg/bin/meg init -)"
 
