@@ -1,0 +1,10 @@
+{
+	"extensions":
+	[
+		"rabl",
+		"ru",
+		".pryrc",
+		"Cheffile",
+		"Puppetfile"
+	]
+}
