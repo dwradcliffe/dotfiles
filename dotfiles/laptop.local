@@ -1,17 +1,27 @@
 #!/bin/sh
 
+rbenv install 2.0.0
+
 brew tap caskroom/cask
 brew install brew-cask
 
 brew cask install google-chrome
 brew cask install dropbox
+brew cask install onepassword
+brew cask install iterm2
 
 brew cask install chefdk
 
 brew cask install diffmerge
 brew cask install slack
-#brew cask install pg-commander
+brew cask install firefox
+brew cask install evernote
+brew cask install sublime-text
+brew cask install sequel-pro
+brew cask install pg-commander
 
-#brew cask install qlmarkdown
-#brew cask install qlcolorcode
-#brew cask install quicklook-json
+brew cask install qlmarkdown
+brew cask install qlcolorcode
+brew cask install quicklook-json
+
+brew install go
