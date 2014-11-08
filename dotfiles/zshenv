@@ -2,7 +2,7 @@
 export EDITOR='subl -w'
 
 # recommended by brew doctor
-export PATH='/Users/david/bin:/Users/david/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin'
+export PATH='/Users/david/bin:/Users/david/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/localbin:/usr/local/sbin'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
