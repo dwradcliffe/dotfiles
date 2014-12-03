@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git heroku brew ruby git-flow)
+plugins=(git heroku brew ruby git-flow rbenv)
 source $ZSH/oh-my-zsh.sh
 
 # setup prompt
