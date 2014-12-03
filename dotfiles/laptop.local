@@ -1,27 +1,41 @@
 #!/bin/sh
 
-rbenv install 2.0.0
+rbenv install 2.0.0-p594
+
+brew install go
+
+brew install mysql
+# load and start mysql
+
+brew install tree
 
 brew tap caskroom/cask
+brew tap caskroom/versions
 brew install brew-cask
 
-brew cask install google-chrome
-brew cask install dropbox
-brew cask install onepassword
-brew cask install iterm2
-
+brew cask install adium
+brew cask install alfred
 brew cask install chefdk
-
 brew cask install diffmerge
-brew cask install slack
+brew cask install dropbox
 brew cask install firefox
-brew cask install evernote
-brew cask install sublime-text
-brew cask install sequel-pro
+brew cask install google-chrome
+brew cask install google-chrome-canary
+brew cask install google-hangouts
+brew cask install iterm2
+brew cask install onepassword
 brew cask install pg-commander
+brew cask install sequel-pro
+brew cask install slack
+brew cask install spotify
+brew cask install sublime-text3
+brew cask install transmit
+brew cask install vagrant
+brew cask install virtualbox
+brew cask install viscosity
+brew cask install vlc
+brew cask install sococo
 
 brew cask install qlmarkdown
 brew cask install qlcolorcode
 brew cask install quicklook-json
-
-brew install go
