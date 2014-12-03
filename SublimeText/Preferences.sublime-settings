@@ -1,4 +1,5 @@
 {
+	"color_scheme": "Packages/User/Monokai (SL).tmTheme",
 	"disable_colored_folder_labels": true,
 	"disable_colored_group_labels": true,
 	"file_exclude_patterns":
@@ -41,7 +42,7 @@
 		"vendor/ruby",
 		"tmp/librarian/cache"
 	],
-	"font_size": 12.0,
+	"font_size": 11.0,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[

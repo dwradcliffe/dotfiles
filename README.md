@@ -2,8 +2,8 @@
 
     rcup -d dotfiles
 
-## Sublime Text 2
+## Sublime Text 3
 
-    cd ~/Library/Application\ Support/Sublime\ Text\ 2
+    $ cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
     $ rm -rf User
-    $ ln -s ~/.dotfiles/ST2 User
+    $ ln -s ~/.dotfiles/SublimeText User
