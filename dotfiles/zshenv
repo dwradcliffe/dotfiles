@@ -13,12 +13,12 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$PATH:/usr/local/lib/node_modules"
 source $(brew --prefix nvm)/nvm.sh
 
-### Added for ChefDK
-export PATH="/opt/chefdk/bin:$PATH"
-
 ### rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - zsh --no-rehash)"
+
+### Added for ChefDK
+export PATH="/opt/chefdk/bin:$PATH"
 
 # Setup rubygems cli
 #eval "$($HOME/.meg/bin/meg init -)"
