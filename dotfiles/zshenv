@@ -21,7 +21,7 @@ eval "$(rbenv init - zsh --no-rehash)"
 export PATH="/opt/chefdk/bin:$PATH"
 
 # Setup rubygems cli
-#eval "$($HOME/.meg/bin/meg init -)"
+eval "$($HOME/rubygems/meg/bin/meg init -)"
 
 # Setup go env
 export GOPATH=~/gocode
