@@ -1,5 +1,5 @@
 # Set editor
-export EDITOR='subl -w'
+export EDITOR='atom -w'
 
 export PATH="$HOME/.bin:$PATH"
 

@@ -28,7 +28,7 @@ brew cask install pg-commander
 brew cask install sequel-pro
 brew cask install slack
 brew cask install spotify
-brew cask install sublime-text3
+brew cask install atom
 brew cask install transmit
 brew cask install vagrant
 brew cask install virtualbox
