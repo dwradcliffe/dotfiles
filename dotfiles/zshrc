@@ -5,6 +5,9 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git heroku brew ruby git-flow rbenv)
 source $ZSH/oh-my-zsh.sh
 
+# awscli autocomplete
+source /usr/local/share/zsh/site-functions/_aws
+
 # setup prompt
 git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
@@ -13,12 +16,19 @@ git_prompt_info() {
   fi
 }
 setopt promptsubst
-export PS1='%F{blue}%~$(git_prompt_info) %F{blue}➜ %f'
+export PS1='%F{blue}%~$(git_prompt_info) %(?..%F{yellow}[%?] )%F{blue}➜ %f'
+
+# history
+HOSTNAME="$(hostname)"
+HOSTNAME_SHORT="${HOSTNAME%%.*}"
+mkdir -p ${HOME}/.history/$(date -u +%Y/%m/)
+export HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d)_${HOSTNAME_SHORT}"
 
 # source other files
 [[ -f ~/.zshenv ]] && source ~/.zshenv
 [[ -f ~/.secrets ]] && source ~/.secrets
 [[ -f ~/.aliases ]] && source ~/.aliases
+[[ -f ~/.functions ]] && source ~/.functions
 
 # Allow [ or ] whereever you want
 unsetopt nomatch

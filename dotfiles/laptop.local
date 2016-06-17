@@ -1,13 +1,17 @@
 #!/bin/sh
 
-rbenv install 2.0.0-p594
+rbenv install 2.3.1
 
 brew install go
 
 brew install mysql
 # load and start mysql
 
+brew install htop
 brew install tree
+brew install mtr
+brew install awscli
+# ln -s /usr/local/Cellar/mtr/0.85/sbin/mtr /usr/local/bin/mtr
 
 brew tap caskroom/cask
 brew tap caskroom/versions
@@ -39,3 +43,8 @@ brew cask install sococo
 brew cask install qlmarkdown
 brew cask install qlcolorcode
 brew cask install quicklook-json
+
+brew install nvm
+brew install flow
+brew install watchman
+nvm install iojs-v2 && nvm alias default iojs-v2
