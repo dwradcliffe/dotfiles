@@ -1,6 +1,7 @@
 [user]
 	name = David Radcliffe
 	email = radcliffe.david@gmail.com
+	signingkey = 0ADF372B
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = input
@@ -26,3 +27,9 @@ protocol = https
 
 [url "git@github.com:"]
   pushInsteadOf = https://github.com/
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[diff]
+	compactionHeuristic = true
