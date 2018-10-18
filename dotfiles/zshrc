@@ -9,27 +9,24 @@ source $ZSH/oh-my-zsh.sh
 source /usr/local/share/zsh/site-functions/_aws
 
 # setup prompt
-git_prompt_info() {
+function git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
   if [[ -n $ref ]]; then
     echo " %F{green}${ref#refs/heads/}%f"
   fi
 }
-function kubernetes-current-context-info() {
+function kubernetes_current_context_info() {
   if which kubectl > /dev/null; then
-    cname=`kubectl config current-context`
-    cmd="kubectl config view -o jsonpath='{.contexts[?(@.name == \"${cname}\")].context.namespace}'"
+    contextname=`kubectl config view -o jsonpath='{.current-context}'`
+    contextname=${contextname#*: }
+    cmd="kubectl config view -o jsonpath='{.contexts[?(@.name == \"${contextname}\")].context.namespace}'"
     namespace=$(bash -c "${cmd}")
-    echo "${cname}/${namespace}"
+    echo "${contextname}/${namespace}"
   fi
-}
-function kubernetes-current-context() {
-  local out=`cat ~/.kube/config | grep current-context`
-  echo ${out#*: }
 }
 setopt promptsubst
 export PS1='%F{blue}%~$(git_prompt_info) %(?..%F{yellow}[%?] )%F{blue}➜ %f'
-export RPROMPT='%{$fg[yellow]%}⎈ %{$reset_color%}%{$fg[cyan]%} $(kubernetes-current-context-info) %{$reset_color%} %(?..💥 )'
+export RPROMPT='%{$fg[yellow]%}⎈ %{$reset_color%}%{$fg[cyan]%} $(kubernetes_current_context_info) %{$reset_color%} %(?..💥 )'
 
 # source other files
 [[ -f ~/.zshenv ]] && source ~/.zshenv
