@@ -1,30 +1,27 @@
 # Set editor
-export EDITOR='atom -w'
-
-export PATH="$HOME/.bin:$PATH"
+export EDITOR='vim'
 
 # recommended by brew doctor
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 ### Added for Node:
-export PATH="$PATH:/usr/local/lib/node_modules"
-source $(brew --prefix nvm)/nvm.sh
-
-### rbenv
-# export PATH="$HOME/.rbenv/bin:$PATH"
-# eval "$(rbenv init - --no-rehash)"
+# export PATH="$PATH:/usr/local/lib/node_modules"
+# export NVM_DIR=~/.nvm
+# source $(brew --prefix nvm)/nvm.sh
 
 ### Added for ChefDK
-export PATH="/opt/chefdk/bin:$PATH"
+# export PATH="/opt/chefdk/bin:$PATH"
 
 # Setup rubygems cli
 eval "$($HOME/rubygems/meg/bin/meg init -)"
 
 # Setup go env
-export GOPATH=~/gocode
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOPATH=$HOME
+export PATH=$GOPATH/bin:$PATH
+export PATH=/Users/david/.dev/go/1.8/bin:$PATH
+export GOROOT=/Users/david/.dev/go/1.8
+# export GOPATH=~/gocode
+# export GOBIN=$GOPATH/bin
+# export PATH=$PATH:/usr/local/opt/go/libexec/bin
+# export PATH=$GOBIN:$PATH

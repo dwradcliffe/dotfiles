@@ -1,3 +1,47 @@
 function hist() {
   grep "$*" -R ~/.history
 }
+
+function debug() {
+  kubectl run -ti --rm $USER-test --image dwradcliffe/debug -- bash
+}
+
+function fastlycurl() {
+  curl -svo /dev/null $*
+}
+
+function cordon-zone() {
+  kubectl get nodes -l failure-domain.beta.kubernetes.io/zone=$1 -o jsonpath='{.items..metadata.name}' | xargs -n 1 kubectl cordon
+}
+
+function drain-pool() {
+  kubectl get nodes -l cloud.google.com/gke-nodepool=$1 -o jsonpath='{.items..metadata.name}' | xargs -n 1 kubectl drain --ignore-daemonsets --force --delete-local-data
+}
+
+function cordon-pool() {
+  kubectl get nodes -l cloud.google.com/gke-nodepool=$1 -o jsonpath='{.items..metadata.name}' | xargs -n 1 kubectl cordon
+}
+
+function delete-pool() {
+  kubectl get pods --all-namespaces -o wide | grep $1 | egrep "fluentd-forwarder|node-exporter|datadog-agent|kube-proxy|fluentd|kafkabridge|k8s-process-monitor|redis-hostvm-configurer|conntrack-bumper|trace-proxy|npd|metadata-proxy-production|kernel-tuning|crash-reporter|calico-node|ip-masq-agent|Terminating" -v | awk '{print "kubectl delete pod -n", $1, $2}'
+}
+
+function what-pods-are-running() {
+  kubectl get pods --all-namespaces -o wide | grep $1 | egrep "fluentd-forwarder|node-exporter|datadog-agent|kube-proxy|fluentd|kafkabridge|k8s-process-monitor|redis-hostvm-configurer|conntrack-bumper|trace-proxy|npd|metadata-proxy-production" -v
+}
+
+function uncordon-pool() {
+  kubectl get nodes -l cloud.google.com/gke-nodepool=$1 -o jsonpath='{.items..metadata.name}' | xargs -n 1 kubectl uncordon
+}
+
+# Usage: kube <cluster> [namespace]
+function kube() {
+  kubectl config use-context $1
+  if [ "$#" -ne 1 ]; then
+    kubectl config set-context $1 --namespace $2
+  fi
+}
+
+function reset-camera() {
+  sudo killall AppleCameraAssistant;sudo killall VDCAssistant
+}

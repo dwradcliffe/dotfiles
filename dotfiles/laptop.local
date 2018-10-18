@@ -1,50 +1,21 @@
 #!/bin/sh
 
-rbenv install 2.3.1
-
-brew install go
-
-brew install mysql
-# load and start mysql
-
 brew install htop
 brew install tree
 brew install mtr
 brew install awscli
-# ln -s /usr/local/Cellar/mtr/0.85/sbin/mtr /usr/local/bin/mtr
 
-brew tap caskroom/cask
-brew tap caskroom/versions
-brew install brew-cask
+# brew tap caskroom/versions
 
-brew cask install adium
-brew cask install alfred
 brew cask install chefdk
 brew cask install diffmerge
 brew cask install dropbox
-brew cask install firefox
-brew cask install google-chrome
-brew cask install google-chrome-canary
-brew cask install google-hangouts
-brew cask install iterm2
-brew cask install onepassword
-brew cask install pg-commander
-brew cask install sequel-pro
 brew cask install slack
 brew cask install spotify
 brew cask install atom
 brew cask install transmit
-brew cask install vagrant
-brew cask install virtualbox
-brew cask install viscosity
 brew cask install vlc
-brew cask install sococo
 
 brew cask install qlmarkdown
 brew cask install qlcolorcode
 brew cask install quicklook-json
-
-brew install nvm
-brew install flow
-brew install watchman
-nvm install iojs-v2 && nvm alias default iojs-v2

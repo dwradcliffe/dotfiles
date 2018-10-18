@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git heroku brew ruby)
+plugins=(git heroku brew ruby kubectl)
 source $ZSH/oh-my-zsh.sh
 
 # awscli autocomplete
@@ -15,14 +15,21 @@ git_prompt_info() {
     echo " %F{green}${ref#refs/heads/}%f"
   fi
 }
+function kubernetes-current-context-info() {
+  if which kubectl > /dev/null; then
+    cname=`kubectl config current-context`
+    cmd="kubectl config view -o jsonpath='{.contexts[?(@.name == \"${cname}\")].context.namespace}'"
+    namespace=$(bash -c "${cmd}")
+    echo "${cname}/${namespace}"
+  fi
+}
+function kubernetes-current-context() {
+  local out=`cat ~/.kube/config | grep current-context`
+  echo ${out#*: }
+}
 setopt promptsubst
 export PS1='%F{blue}%~$(git_prompt_info) %(?..%F{yellow}[%?] )%F{blue}➜ %f'
-
-# history
-HOSTNAME="$(hostname)"
-HOSTNAME_SHORT="${HOSTNAME%%.*}"
-mkdir -p ${HOME}/.history/$(date -u +%Y/%m/)
-export HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d)_${HOSTNAME_SHORT}"
+export RPROMPT='%{$fg[yellow]%}⎈ %{$reset_color%}%{$fg[cyan]%} $(kubernetes-current-context-info) %{$reset_color%} %(?..💥 )'
 
 # source other files
 [[ -f ~/.zshenv ]] && source ~/.zshenv
@@ -38,4 +45,24 @@ unsetopt correct_all
 
 source /opt/dev/dev.sh
 
-chruby 2.3.1
+# unalias knife
+alias knife=/opt/chefdk/bin/knife
+
+chruby 2.4.4
+
+# alias knife='/usr/local/bin/knife'
+# alias berks='/usr/local/bin/berks'
+# alias kitchen='/usr/local/bin/kitchen'
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+source <(kubectl completion zsh)
+#alias knife=/Users/david/shopify/cookbooks/bin/knife-anywhere
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/Cellar/terraform/0.11.7/bin/terraform terraform
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
