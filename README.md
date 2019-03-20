@@ -1,3 +1,0 @@
-## Dotfiles
-
-    rcup -d dotfiles
